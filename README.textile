@@ -1,0 +1,82 @@
+h1. Cherokee plugin for Server Density
+
+h2. Overview
+
+This plugin will monitor the Cherokee web server.
+
+h2. Installation
+
+* Configure your agent so that it knows about plugins http://www.serverdensity.com/docs/agent/plugins/ 
+* Install the plugin in your sd-agent plugins directory
+* Move Cherokee.py into that directory 
+* Restart the agent (service sd-agent restart)
+* Head to https://youraccount.serverdensity.com/plugins/ and Add new plugin
+* Add a plugin called Cherokee
+* Edit the Cherokee plugin and create groups for the graphs (see the configuration section below)
+
+h2. Configuration
+
+h3. Cherokee web server
+
+To enable server information and connection details:
+
+* Launch the web administration interface
+* Go to the "vServers" section
+* Open the "default" vserver
+* Click on the "/about" directory handler
+* Click on the "Handler" tab
+* Change the "Show Information" drop-down to select "Server Information + Connections"
+* Click on the "Security" tab
+* Next to "Allow From" enter "127.0.0.1"
+* Click "SAVE" in the top-right corner
+* Click "Graceful restart"
+
+Now, to test the server information and connection details are available you can run the command:
+
+<pre>
+	curl -XGET 'http://localhost/about/info/py?type=connection_details'
+</pre>
+
+h3. Defining Server Density Groups
+
+In Server Density, create the following groups in your Cherokee web server
+plugin:
+
+<pre>
+  Title: Traffic
+	tx
+	rx
+	accepts
+	timeouts
+</pre>
+
+<pre>
+  Title: Uptime
+	seconds
+</pre>
+
+<pre>
+  Title: Config
+	threads
+</pre>
+
+<pre>
+  Title: Connections
+	number
+	active
+	reusable
+</pre>
+
+<pre>
+  Title: Modules
+	loggers
+	handlers
+	encoders
+	validators
+	generic
+	balancers
+	rules
+	cryptors
+	vrules
+	collectors
+</pre>
