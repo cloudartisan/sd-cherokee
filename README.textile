@@ -34,7 +34,7 @@ To enable server information and connection details:
 Now, to test the server information and connection details are available you can run the command:
 
 <pre>
-	curl -XGET 'http://localhost/about/info/py?type=connection_details'
+  curl -XGET 'http://localhost/about/info/py?type=connection_details'
 </pre>
 
 h3. Defining Server Density Groups
@@ -44,39 +44,39 @@ plugin:
 
 <pre>
   Title: Traffic
-	tx
-	rx
-	accepts
-	timeouts
+  tx
+  rx
+  accepts
+  timeouts
 </pre>
 
 <pre>
   Title: Uptime
-	seconds
+  seconds
 </pre>
 
 <pre>
   Title: Config
-	threads
+  threads
 </pre>
 
 <pre>
   Title: Connections
-	number
-	active
-	reusable
+  number
+  active
+  reusable
 </pre>
 
 <pre>
   Title: Modules
-	loggers
-	handlers
-	encoders
-	validators
-	generic
-	balancers
-	rules
-	cryptors
-	vrules
-	collectors
+  loggers
+  handlers
+  encoders
+  validators
+  generic
+  balancers
+  rules
+  cryptors
+  vrules
+  collectors
 </pre>
