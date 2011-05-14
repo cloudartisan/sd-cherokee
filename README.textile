@@ -39,11 +39,7 @@ curl -XGET 'http://localhost/about/info/py?type=connection_details'
 
 h3. Server Density agent (optional)
 
-The Cherokee plugin will default to checking
-@http://localhost/about/info/py?type=connection_details@ for stats.  For most
-people, that will probably be sufficient.  However, if you're running Cherokee
-on a different server or using a different path you'll want the plugin to use
-a different URL to get stats.
+The Cherokee plugin will default to checking @http://localhost/about/info/py?type=connection_details@ for stats.  For most people, that will probably be sufficient.  However, if you're running Cherokee on a different server or using a different path you'll want the plugin to use a different URL to get stats.
 
 You can add a configuration variable to @config.cfg@ to do this... eg:
 
