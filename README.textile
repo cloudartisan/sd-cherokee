@@ -34,7 +34,21 @@ To enable server information and connection details:
 Now, to test the server information and connection details are available you can run the command:
 
 <pre>
-  curl -XGET 'http://localhost/about/info/py?type=connection_details'
+curl -XGET 'http://localhost/about/info/py?type=connection_details'
+</pre>
+
+h3. Server Density agent (optional)
+
+The Cherokee plugin will default to checking
+@http://localhost/about/info/py?type=connection_details@ for stats.  For most
+people, that will probably be sufficient.  However, if you're running Cherokee
+on a different server or using a different path you'll want the plugin to use
+a different URL to get stats.
+
+You can add a configuration variable to @config.cfg@ to do this... eg:
+
+<pre>
+cherokee_status_url: http://over.there.com/status/py?type=connection_details
 </pre>
 
 h3. Defining Server Density Groups
