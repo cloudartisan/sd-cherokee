@@ -49,8 +49,7 @@ cherokee_status_url: http://over.there.com/status/py?type=connection_details
 
 h3. Defining Server Density Groups
 
-In Server Density, create the following groups in your Cherokee web server
-plugin:
+In Server Density, create the following groups in your Cherokee web server plugin:
 
 <pre>
   Title: Traffic
