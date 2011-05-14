@@ -4,7 +4,7 @@
 import urllib
 
 
-CHEROKEE_INFO_URL = "http://localhost/about/info/py?type=connection_details"
+CHEROKEE_STATUS_URL = "http://localhost/about/info/py?type=connection_details"
 
 
 class Cherokee:
@@ -101,10 +101,22 @@ class Cherokee:
 
     def run(self):
         stats = {}
+
         try:
-            data = urllib.urlopen(CHEROKEE_INFO_URL).read()
-            self.checks_logger.debug(data)
-            server_info = eval(data)
+            # Pull the Cherokee status URL from the config and default to
+            # CHEROKEE_STATUS_URL if it is not present
+            url = self.raw_config['Main'].get('cherokee_status_url',
+                    CHEROKEE_STATUS_URL)
+        except KeyError:
+            # Should only happen if Main section of config is missing
+            self.checks_logger.error('Missing sd-agent configuration')
+            url = CHEROKEE_STATUS_URL
+
+        try:
+            # Obtain Cherokee status, assumes Python data structure
+            raw_data = urllib.urlopen(CHEROKEE_STATUS_URL).read()
+            self.checks_logger.debug(raw_data)
+            server_info = eval(raw_data)
             stats.update(self.get_uptime_stats(server_info))
             stats.update(self.get_config_stats(server_info))
             stats.update(self.get_traffic_stats(server_info))
@@ -121,5 +133,9 @@ if __name__ == "__main__":
     logger = logging.getLogger("Cherokee")
     logger.setLevel(logging.DEBUG)
     logger.addHandler(logging.StreamHandler())
-    cherokee = Cherokee(None, logger, None)
+    # Fake configuration
+    raw_config = {
+        "cherokee_status_url" : CHEROKEE_STATUS_URL,
+    }
+    cherokee = Cherokee(None, logger, raw_config)
     cherokee.run()
