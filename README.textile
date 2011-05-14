@@ -4,7 +4,7 @@ h2. Overview
 
 This plugin will monitor the Cherokee web server.
 
-h2. Installation
+h2. Manual Installation
 
 * Configure your agent so that it knows about plugins http://www.serverdensity.com/docs/agent/plugins/ 
 * Install the plugin in your sd-agent plugins directory
@@ -14,7 +14,7 @@ h2. Installation
 * Add a plugin called Cherokee
 * Edit the Cherokee plugin and create groups for the graphs (see the configuration section below)
 
-h2. Configuration
+h2. Manual Configuration
 
 h3. Cherokee web server
 
